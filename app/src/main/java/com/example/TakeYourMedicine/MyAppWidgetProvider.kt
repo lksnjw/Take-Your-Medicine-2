@@ -1,61 +1,30 @@
-package com.example.TakeYourMedicine
+package com.example.TakeYourMedicine.widget
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.widget.RemoteViews
-import com.example.TakeYourMedicine.model.Repositories
-import com.example.TakeYourMedicine.model.WorkResult // Replace this with your actual result class
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import com.example.TakeYourMedicine.R
+import com.example.TakeYourMedicine.view.MainActivity
 
 class MyAppWidgetProvider : AppWidgetProvider() {
-
-    override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
+    override fun onUpdate(
+        context: Context,
+        appWidgetManager: AppWidgetManager,
+        appWidgetIds: IntArray
+    ) {
         for (appWidgetId in appWidgetIds) {
-            updateAppWidget(context, appWidgetManager, appWidgetId)
-        }
-    }
+            val views = RemoteViews(context.packageName, R.layout.widget_layout)
 
-    private fun updateAppWidget(context: Context, appWidgetManager: AppWidgetManager, appWidgetId: Int) {
-        val views = RemoteViews(context.packageName, R.layout.widget_layout)
+            // Setup click handler to open MainActivity when clicked
+            val intent = Intent(context, MainActivity::class.java)
+            val pendingIntent = PendingIntent.getActivity(context, 0, intent, 0)
+            views.setOnClickPendingIntent(R.id.widget_layout, pendingIntent)
 
-        CoroutineScope(Dispatchers.IO).launch {
-            try {
-                val tasksList = mutableListOf<String>()
-                Repositories.gsonRepository.getHabitsFlow().collect { result ->
-                    when (result) {
-                        is WorkResult.SuccessResult -> {
-                            // If result is successful, handle the data
-                            result.data?.let { tasks ->
-                                tasksList.addAll(tasks.map { it.name }) // Assuming each task has a 'name' property
-                            }
-                        }
-                        is WorkResult.ErrorResult -> {
-                            // Handle the error
-                        }
-                        is WorkResult.LoadingResult -> {
-                            // Handle loading state if needed
-                        }
-                        else -> {
-                            // Handle other cases or unexpected results
-                        }
-                    }
-                }
-
-                // Join the task names into a single string
-                val taskNames = tasksList.take(3).joinToString("\n")
-
-                // Update the widget view with tasks
-                views.setTextViewText(R.id.widgetTextView, taskNames)
-
-                // Update the widget UI
-                appWidgetManager.updateAppWidget(appWidgetId, views)
-            } catch (e: Exception) {
-                e.printStackTrace()
-            }
+            // Update the widget layout
+            appWidgetManager.updateAppWidget(appWidgetId, views)
         }
     }
 }
