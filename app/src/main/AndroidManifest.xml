@@ -19,13 +19,9 @@
         tools:targetApi="31">
 
         <!-- Activity declarations -->
-        <activity
-            android:name=".viewmodel.Signin"
-            android:exported="false" />
 
-        <activity
-            android:name=".viewmodel.SignUp"
-            android:exported="false" />
+
+
 
 
 

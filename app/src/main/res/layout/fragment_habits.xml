@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="@color/background"
-    android:backgroundTint="#323C4A">
+    android:background="#ADB0B7"
+    android:backgroundTint="#323E4B">
 
     <ImageView
         android:id="@+id/imageView2"

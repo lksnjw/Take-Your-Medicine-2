@@ -19,7 +19,6 @@ import com.example.TakeYourMedicine.databinding.FragmentCasesBinding
 import com.example.TakeYourMedicine.databinding.PartLoadingBinding
 import com.example.TakeYourMedicine.model.Repositories
 import com.example.TakeYourMedicine.model.cases.Case
-import com.example.TakeYourMedicine.model.graph.Graph
 import com.example.TakeYourMedicine.model.timer.TimerCase
 import com.example.TakeYourMedicine.view.Consts.DAY_UNIX_MILLIS
 import com.example.TakeYourMedicine.view.Consts.KEY_HABIT_ID
@@ -27,7 +26,6 @@ import com.example.TakeYourMedicine.view.adapters.CasesActionListener
 import com.example.TakeYourMedicine.view.adapters.CasesAdapter
 import com.example.TakeYourMedicine.view.adapters.ItemList
 import com.example.TakeYourMedicine.view.adapters.delegates.CaseDelegate
-import com.example.TakeYourMedicine.view.adapters.delegates.GraphDelegate
 import com.example.TakeYourMedicine.view.adapters.delegates.TimerDelegate
 import com.example.TakeYourMedicine.viewmodel.CasesViewModel
 import com.example.TakeYourMedicine.viewmodel.MainViewModelFactory
@@ -46,7 +44,6 @@ class CasesFragment : Fragment() {
         super.onCreate(savedInstanceState)
         adapter = CasesAdapter(
             listOf(
-                GraphDelegate(requireContext()),
                 TimerDelegate(requireContext()),
                 CaseDelegate(requireContext())
             ), object : CasesActionListener {
@@ -107,7 +104,7 @@ class CasesFragment : Fragment() {
                         }
 
                         adapter.data = listOf<ItemList>(
-                            Graph(mapCases),
+
                             TimerCase(casesUiState.cases.first().date)
                         ) + casesUiState.cases
                     }

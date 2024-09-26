@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.TakeYourMedicine.R
 import com.example.TakeYourMedicine.databinding.ItemCaseBinding
-import com.example.TakeYourMedicine.databinding.ItemGraphBinding
 import com.example.TakeYourMedicine.databinding.ItemTimerBinding
 import com.example.TakeYourMedicine.model.cases.Case
 
@@ -72,7 +71,6 @@ class CasesAdapter(
 
     class CaseViewHolder(val binding: ItemCaseBinding) : ViewHolder(binding.root)
     class TimerViewHolder(val binding: ItemTimerBinding) : ViewHolder(binding.root)
-    class GraphViewHolder(val binding: ItemGraphBinding) : ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         delegates[viewType].getViewHolder(parent, this)
