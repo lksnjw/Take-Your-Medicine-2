@@ -12,7 +12,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.TakeYourMedicine.R
 import com.example.TakeYourMedicine.databinding.AlertdialogAddRenameHabitBinding
 import com.example.TakeYourMedicine.databinding.FragmentHabitsBinding
@@ -56,7 +56,9 @@ class HabitsFragment : Fragment() {
         binding = FragmentHabitsBinding.inflate(inflater, container, false)
         loadingBinding = PartLoadingBinding.bind(binding.root)
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        // Set GridLayoutManager with 2 columns
+        val gridLayoutManager = GridLayoutManager(requireContext(), 2)
+        binding.recyclerView.layoutManager = gridLayoutManager
         binding.recyclerView.adapter = adapter
 
         // Collecting ViewModel state using lifecycle-aware collection

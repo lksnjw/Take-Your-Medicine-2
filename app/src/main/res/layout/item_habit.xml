@@ -9,6 +9,25 @@
     android:backgroundTint="@color/black"
     android:elevation="8dp">
 
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="39dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="1dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_launcher_round" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="151dp"
+        android:layout_height="165dp"
+        android:alpha="0.1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img" />
+
     <ImageButton
         android:id="@+id/moreButton"
         style="@style/Widget.AppCompat.ImageButton"
@@ -27,8 +46,9 @@
         style="@style/TextStyleHabit"
         android:layout_width="96dp"
         android:layout_height="67dp"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="45dp"
         android:layout_marginTop="64dp"
+        android:layout_marginEnd="32dp"
         android:layout_marginBottom="64dp"
         android:animateLayoutChanges="true"
         android:text="TextView"
@@ -37,6 +57,7 @@
         app:layout_constraintEnd_toStartOf="@+id/moreButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
