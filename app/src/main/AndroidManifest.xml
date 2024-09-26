@@ -20,11 +20,6 @@
 
         <!-- Activity declarations -->
 
-
-
-
-
-
         <activity
             android:name=".view.MainActivity"
             android:exported="false" />
@@ -44,9 +39,6 @@
         <receiver
             android:name=".AlarmReceiver"
             android:exported="false"/>
-
-
-
 
 
         <receiver
