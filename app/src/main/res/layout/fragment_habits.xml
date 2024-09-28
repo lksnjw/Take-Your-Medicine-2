@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="true"
-    android:background="#ADB0B7"
-    android:backgroundTint="#323E4B">
+    android:background="#323F4D"
+    android:backgroundTint="#323F4C">
 
     <ImageView
         android:id="@+id/imageView2"
@@ -21,6 +21,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
 
+        android:backgroundTint="#323E4C"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
